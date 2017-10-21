@@ -1,0 +1,24 @@
+.canIData {
+  display: grid;
+  grid-template-columns: 100%;
+  text-align: left;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 50% 50%;
+  }
+  @media screen and (min-width: 960px) {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+  .data__item {
+    padding: 2rem 1rem;
+    overflow: hidden;
+    h5 {
+      color: tomato;
+      + p {
+        color: #4F4D3F;
+        + i {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

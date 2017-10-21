@@ -1,0 +1,53 @@
+{
+  "name": "modernfrontend.io",
+  "title": "Built with love for the modern developer",
+  "url": "http://modernfrontend.io/",
+  "author": "Justyn Clark",
+  "copyright": "2017",
+  "version": "1.0.0",
+  "license": "MIT",
+  "browserslist": [
+    "> 1%"
+  ],
+  "repository": "git+https://github.com/justyn-clark/modernfrontend.io.git",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.5.2",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.13",
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "postcss-cli": "^4.1.0",
+    "uglify-js": "^2.7.4",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "eventemitter2": "^4.1.2",
+    "jquery": "^3.1.1"
+  },
+  "scripts": {
+    "start": "npm-run-all -p sync watch:css bundle",
+    "test": "eslint src/js",
+    "sync": "browser-sync start --server --files \"*.html, app/bundle.js, app/app.css\"",
+    "build:css": "node-sass --include-path scss src/**/*.scss app/app.css --source-map-embed --source-map-contents --output-style compressed",
+    "build": "npm run bundle && npm run build:css",
+    "bundle": "watchify src/app.js -d -t [ babelify  --presets [ env ] ] --outfile app/bundle.js -v",
+    "postcss": "postcss --use autoprefixer -o app/app.css app/app.css",
+    "watch:css": "nodemon -e scss -x \"npm-run-all build:css postcss\"",
+    "babel-node": "babel-node src/js/app.js",
+    "ug": "uglifyjs app/bundle.js --compress --mangle --output app/bundle.min.js --source-map app/bundle.min.js.map"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "main": "src/app.js"
+}
