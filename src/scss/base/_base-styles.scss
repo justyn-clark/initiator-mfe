@@ -23,7 +23,11 @@ body {
     color: white;
   }
   &.overlay--open {
-    //overflow-y: hidden;
+    overflow-y: hidden;
+  }
+  &.header--open {
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 

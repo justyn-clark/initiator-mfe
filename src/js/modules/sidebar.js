@@ -20,9 +20,11 @@
     },
     init() {
       //sidebar.interval(sidebar.slideToggle, 2000);
-      sidebar.delay(sidebar.openSidebar, 2000);
+      //sidebar.delay(sidebar.openSidebar, 50);
+      sidebar.openSidebar();
     }
   }
+
 
   EVT.on('init', sidebar.init);
 

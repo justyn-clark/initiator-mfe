@@ -1,6 +1,6 @@
 import './youtubeData';
 let { items } = MFE.utils.data;
-let { qs } = MFE.helpers;
+let { $on, qs } = MFE.helpers;
 
 function getYouTubeIDs() {
   let ids = [];
@@ -19,9 +19,15 @@ function youTubePlayer(id) {
         iframeWrapper.className = 'iframeWrapper';
     var iframeDiv = document.createElement('iFrame');
         iframeDiv.setAttribute('data-youtube-id', id);
-        iframeDiv.setAttribute('src', 'https://www.youtube.com/embed/' + id + '?rel=0&amp;controls=0&amp');
-            video__modal.appendChild(iframeWrapper);
+        iframeDiv.setAttribute('src', 'https://www.youtube.com/embed/' + id );
+    var closeBtn = document.createElement('div');
+        closeBtn.className = 'closeBtn';
+
+    $on(closeBtn, 'click', MFE.utils.closeOverlay); // close overlay
+
+    video__modal.appendChild(iframeWrapper);
             iframeWrapper.appendChild(iframeDiv);
+            video__modal.appendChild(closeBtn);
             body.appendChild(video__modal);
             console.log('YouTube video player is open');
   }

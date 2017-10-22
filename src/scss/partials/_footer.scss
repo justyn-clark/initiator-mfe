@@ -31,40 +31,7 @@
     }
   }
 .cookie-policy__close {
-  $size: 20px;
-  height: $size;
-  width: $size;
-  position: absolute;
-  right: 20px;
-  top: 15px;
-
-  &:before, &:after {
-    $width: 30px;
-    $height: 2px;
-    transform: rotate(-45deg);
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -$height/2;
-    margin-left: -$width/2;
-    display: block;
-    height: $height;
-    width: $width;
-    background-color: #fff;
-    transition: all 0.2s ease-out;
-  }
-
-  &:after {
-    transform: rotate(45deg);
-  }
-
-  &:hover {
-
-    &:before, &:after {
-      transform: rotate(0deg);
-    }
-  }
+@include closeBtn(2px, 40px);
 }
 .cookie-policy__text {
   text-align: center;

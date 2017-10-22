@@ -37,13 +37,11 @@
           canIData.innerHTML = titles;
 
       })
-
   }
 
   if ("Promise" in window) {   // Check for Promise on window
     console.log('Promises are supported');
     //EVT.on("init", init);
-
    } else {
      console.log('Your browser doesn\'t support the <code>Promise<code> interface.');
    }

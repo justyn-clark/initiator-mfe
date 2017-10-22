@@ -22,11 +22,12 @@ Made using Initiator THE modern front-end boilerplate and workflow.
 * Homepage: [initiator.justynclark.com](http://initiator.justynclark.com)
 
 These are some of the main features and modern technologies used:
+* Built-in npm build scripts for auto-compilation and auto-minification of CSS and JavaScript files for production
+* BEM - Block Element Modifier method as style convention for CSS naming  
 * ES6 Module Pattern setup with Browerify module bundling
 * ES6 newest features including: fetch and promises, etc...     
 * CSS Grid display for page layouts
 * HTML5 framework and HTML5 semantics
-* Built-in npm build scripts for auto-compilation and auto-minification of CSS and JavaScript files for production
 * Baseline HTML5 features, DNS prefetching, responsive meta
 * Encourages one-file CSS/JS in the view (HTML) for performance
 * Browsersync live reloading the browser upon changes
