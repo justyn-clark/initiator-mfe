@@ -2,7 +2,7 @@ import { setPolicyCookie } from './cookies';
 import { playRandomYouTubeVideo } from './youTubePlayer';
 let { $on, qs } = MFE.helpers ;
 
-export function clickHandlers() {
+export default function clickHandlers () {
   let header = qs('.header'),
       body = qs('body'),
       menuBtn = qs('.mobile-menu'),
