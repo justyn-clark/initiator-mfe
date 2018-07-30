@@ -1,1 +1,0 @@
-console.error("TypeError: Cannot read property 'bindings' of null while parsing file: /Users/jujohnson/Desktop/modernfrontend.io/src/js/modules/handleClicks.js");
