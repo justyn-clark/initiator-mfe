@@ -4,31 +4,45 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = function (env) {
   return ({
-    mode   : 'development',
-    entry  : './src/index.js',
-    output : {
+    mode: 'development',
+    entry: './src/app.js',
+    output: {
       filename: '[name].bundle.js',
-      path    : path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist')
     },
     devtool: env === 'production' ? 'source-map' : 'cheap-eval-source-map',
-    watch  : true,
-    module : {
+    watch: true,
+    module: {
       rules: [
         {
-          test   : /\.js$/,
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          use: [
+            'file-loader',
+            {
+              loader: 'image-webpack-loader',
+              options: {
+                bypassOnDebug: true, // webpack@1.x
+                disable: true // webpack@2.x and newer
+              }
+            }
+          ]
+        },
+        {
+          test: /\.js$/,
           exclude: /node_modules/,
-          loader : 'babel-loader',
+          loader: 'babel-loader',
           options: {
             presets: ['es2015']
           }
         },
         {
           test: /\.(scss|css)$/,
-          use : ExtractTextPlugin.extract({
-            use     : [
+          use: ExtractTextPlugin.extract({
+            use: [
               {
                 loader: 'css-loader'
               },
@@ -40,8 +54,8 @@ module.exports = function (env) {
           })
         },
         {
-          test   : /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-          loader : 'url-loader',
+          test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+          loader: 'url-loader',
           options: {
             limit: 10000
           }
@@ -55,12 +69,13 @@ module.exports = function (env) {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, './', 'index.html')
       }),
+      new CopyWebpackPlugin([
+        { from: './src/img', to: 'images' }
+      ]),
       new BrowserSyncPlugin({
-        // browse to http://localhost:3000/ during development,
-        // ./public directory is being served
-        host  : 'localhost',
-        port  : 3000,
-        files : ['./dist/*.html', 'src/**/*.scss'],
+        host: 'localhost',
+        port: 3000,
+        files: ['./dist/*.html', 'src/**/*.scss'],
         server: {baseDir: ['dist']}
       })
     ]
