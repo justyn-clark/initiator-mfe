@@ -40,6 +40,12 @@ import './cookies';
     output(x) {
       console.log(x);
     },
+    cond(val, cases, fallback, scope) {
+      var theCase = cases.hasOwnProperty(val) ? cases[val] : fallback;
+      return typeof theCase == "function" ?
+        theCase.call(scope || this, val) :
+        theCase;
+    },
     charsInElement(elm) {
       if (elm.nodeType == 3) { // TEXT_NODE
         return elm.nodeValue.length;
