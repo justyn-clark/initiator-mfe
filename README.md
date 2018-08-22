@@ -22,6 +22,7 @@ Made using Initiator THE modern front-end boilerplate and workflow.
 * Homepage: [initiator.justynclark.com](http://initiator.justynclark.com)
 
 These are some of the main features and modern technologies used:
+* NEW - Now with WebPack
 * Built-in npm build scripts for auto-compilation and auto-minification of CSS and JavaScript files for production
 * BEM - Block Element Modifier method as style convention for CSS naming  
 * ES6 Module Pattern setup with Browerify module bundling
